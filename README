@@ -1,0 +1,46 @@
+James Garijo-Garde and David Ngetich
+
+Homework 3: Locality
+
+
+Help on this assignment was recieced from several TAs (thanks!).
+
+All required aspects of this assignment should have been correctly implemented.
+The optional extra credit 270 degree rotation has also been implemented. No
+other extra credit modifiers were implemented.
+
+Our solution uses the following general architecture:
+        1) ppmtrans modifies images represented by Pnm_ppm using the
+           A2Methods_UArray2 and A2Methods_T aspects of a2methods.
+        2) a2methods uses a2plain.c for unblocked two-dimensional arrays and
+           a2blocked.c for blocked two-dimensional arrays.
+        3) a2plain.c uses UArray2_T for its underlying 2D array structure while
+           a2blocked.c uses UArray2b_T for a 2D array with blocks.
+        4) UArray2_T uses UArray_T. UArray2b_T uses UArray2b_T for the overall
+           structure of the array and UArray_T for the blocks.
+
+Measurements of performance:
+
+        Size of Image: 1603 x 2856 pixels
+
+        -row-major -rotate 0 Total Time: 57406000 ns | Time Per Pixel: 13 ns
+        -row-major -rotate 90 Total Time: 307609658 ns | Time Per Pixel: 67 ns
+        -row-major -rotate 180 Total Time: 558284031 ns | Time Per Pixel: 122 ns
+        -row-major -rotate 270 Total Time: 806419387 ns | Time Per Pixel: 176 ns
+        -col-major -rotate 0 Total Time: 57269350 ns | Time Per Pixel: 13 ns
+        -col-major -rotate 90 Total Time: 362038324 ns | Time Per Pixel: 79 ns
+        -col-major -rotate 180 Total Time: 664791258 ns | Time Per Pixel: 145 ns
+        -col-major -rotate 270 Total Time: 974183491 ns | Time Per Pixel: 213 ns
+        -block-major -rotate 0 Total Time: 53856350292 ns |
+                Time Per Pixel: 11764 ns
+        -block-major -rotate 90 Total Time: 107926723431 ns |
+                Time Per Pixel: 23574 ns
+        -block-major -rotate 180 Total Time: 161900706750 ns |
+                Time Per Pixel: 35364 ns
+        -block-major -rotate 270 Total Time: 216248678716 ns |
+                Time Per Pixel: 47235 ns
+
+        Computer Tests Were Ran On: Lab 120-B (Dell Precision T1700) with a
+                                    Intel Core i5-4590 running at 3.30GHz
+
+Total time spent on the assignment: 40 +/- 3 hours
