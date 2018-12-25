@@ -1,2 +1,2 @@
 # Image-Rotation
-Implementation of a C program to transpose and rotate images at 90, 180 and 270 degrees
+An implementation of a C program that can transpose and rotate images at 90, 180 and 270 degrees
